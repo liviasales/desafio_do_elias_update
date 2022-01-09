@@ -21,10 +21,11 @@
         }
         return $troco;
     }
+    $notasCont = $notas[$valorTroco];
     $trocoCont = $troco[$valorTroco];
     if (($valorPago > $valorTotal) &&  (!empty($valorPago)) &&  (!empty($valorTotal))) {
         echo "<script>alert('Seu troco é de: R$$valorTroco,00');</script><br>";
-        echo "<script>alert('A quantidade de notas é de: $trocoCont');</script><br>";
+        echo "<script>alert('A quantidade de $notasCont é de: $trocoCont');</script><br>";
     } elseif ($valorPago < $valorTotal) {
         echo "<script>alert('Você ficou devendo o mercado: R$$valorDivida,00');</script><br>";                        
     } else {
