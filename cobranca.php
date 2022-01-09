@@ -42,7 +42,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">R$</span>
                 </div>
-                <input type="text" name="valorTotal" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Insira o valor total da sua compra." required="required">
+                <input type="text" autocomplete="off" name="valorTotal" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Insira o valor total da sua compra." required="required">
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">R$</span>
                 </div>
-                <input type="text" name="valorPago" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Insira o valor pago por você." required="required">
+                <input type="text" autocomplete="off" name="valorPago" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Insira o valor pago por você." required="required">
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                 </div>
