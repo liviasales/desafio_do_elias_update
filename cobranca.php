@@ -16,7 +16,7 @@
     }
     if (($valorPago > $valorTotal) &&  (!empty($valorPago)) &&  (!empty($valorTotal))) {
         echo "<script>alert('Seu troco é de: R$$valorTroco,00');</script><br>";
-        echo "<script>alert('Teremos $quantidade nota(s) de RS$notas,00;');</script><br>";
+        echo "<script>alert('+$quantidade+' nota(s) de: '+$notas+');</script><br>";
     } elseif ($valorPago < $valorTotal) {
         echo "<script>alert('Você ficou devendo o mercado: R$$valorDivida,00');</script><br>";                        
     } else {
