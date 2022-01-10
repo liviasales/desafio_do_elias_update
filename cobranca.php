@@ -3,8 +3,6 @@
     $valorPago = $_POST['valorPago'];
     $valorTroco = $valorPago - $valorTotal;
     $valorDivida = $valorTotal - $valorPago;
-    $notas = array(100,50,20,10,5,2);
-    $quantidade = array(0,0,0,0,0,0);
     function troco($valor) {
         $notas = array(100,50,20,10,5,2);
         $quantidade = array(0,0,0,0,0,0);       
@@ -14,9 +12,10 @@
         }        
         return $quantidade;
     }
-    if (($valorPago > $valorTotal) &&  (!empty($valorPago)) &&  (!empty($valorTotal))) {
+    $msg = print_r(troco($valorTroco));
+    if ((isset($valorPago)) && (isset($valorTotal)) && (!empty($valorPago)) &&  (!empty($valorTotal)) && ($valorPago > $valorTotal)) {
         echo "<script>alert('Seu troco é de: R$$valorTroco,00');</script><br>";
-        echo "<script>alert('+$quantidade+' nota(s) de: '+$notas+');</script><br>";
+        echo "<script>alert('$msg');</script><br>";
     } elseif ($valorPago < $valorTotal) {
         echo "<script>alert('Você ficou devendo o mercado: R$$valorDivida,00');</script><br>";                        
     } else {
