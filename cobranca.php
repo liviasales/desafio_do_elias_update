@@ -1,3 +1,28 @@
+<?php
+    $valorTotal = $_POST['valorTotal'];
+    $valorPago = $_POST['valorPago'];
+    $valorTroco = $valorPago - $valorTotal;
+    $valorDivida = $valorTotal - $valorPago;
+    $notas = array(100,50,20,10,5,2);
+    $quantidade = array(0,0,0,0,0,0);
+    function troco($valor) {
+        $notas = array(100,50,20,10,5,2);
+        $quantidade = array(0,0,0,0,0,0);       
+        for($i = 0; $i < count($quantidade); $i++) {
+            $quantidade[$i] = floor($valor / $notas[$i]);
+            $valor -= $quantidade[$i] * $notas[$i];
+        }        
+        return $quantidade;
+    }
+    if (($valorPago > $valorTotal) &&  (!empty($valorPago)) &&  (!empty($valorTotal))) {
+        echo "<script>alert('Seu troco é de: R$$valorTroco,00');</script><br>";
+        echo "<script>alert('Teremos $quantidade nota(s) de RS$notas,00;');</script><br>";
+    } elseif ($valorPago < $valorTotal) {
+        echo "<script>alert('Você ficou devendo o mercado: R$$valorDivida,00');</script><br>";                        
+    } else {
+        echo "<script>alert('Você não possui troco!!');</script>";
+    }   
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,45 +32,20 @@
     <title>Desafio do Elias</title>
     <link rel="stylesheet" href="bootstrap/bootstrap.css">
 </head>
-<?php
-    $valorTotal = $_POST['valorTotal'];
-    $valorPago = $_POST['valorPago'];
-    $valorTroco = $valorPago - $valorTotal;
-    $valorDivida = $valorTotal - $valorPago;
-    $notas = [100,50,20,10,5,2];
-    $troco = [0,0,0,0,0,0];
-    function troco($valor) {       
-        for($i = 0; $i < count($troco); $i++) {
-            $troco[$i] = floor($valor / $notas[$i]);
-            $valor -= $troco[$i] * $notas[$i];
-        }
-        return $troco;
-    }
-    $notasCont = $notas[$valorTroco];
-    $trocoCont = $troco[$valorTroco];
-    if (($valorPago > $valorTotal) &&  (!empty($valorPago)) &&  (!empty($valorTotal))) {
-        echo "<script>alert('Seu troco é de: R$$valorTroco,00');</script><br>";
-        echo "<script>alert('A quantidade de $notasCont é de: $trocoCont');</script><br>";
-    } elseif ($valorPago < $valorTotal) {
-        echo "<script>alert('Você ficou devendo o mercado: R$$valorDivida,00');</script><br>";                        
-    } else {
-        echo "<script>alert('Você não possui troco!!');</script>";
-    }   
-?>
 <body>
     <div class="container">
             <div class="tittle">
                 <h3>Desafio do troco</h3>
                 <small>By: Elias</small>
             </div>
-        <form method="POST" action="">                        
+        <form method="POST" action="#">                        
             <div class="form-group">
                 <label for="exampleInputEmail1"><b>Valor total dos produtos:</b></label>
                 <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">R$</span>
                 </div>
-                <input type="text" autocomplete="off" name="valorTotal" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Insira o valor total da sua compra." required="required">
+                <input type="text" id="valorTotal" name="valorTotal" autocomplete="off" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Insira o valor total da sua compra." required="required">
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -57,13 +57,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">R$</span>
                 </div>
-                <input type="text" autocomplete="off" name="valorPago" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Insira o valor pago por você." required="required">
+                <input type="text" id="valorPago" name="valorPago" autocomplete="off" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Insira o valor pago por você." required="required">
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                 </div>
                 </div>
             </div>
-            <input type="submit" value="Calcular troco" class="btn btn-success btn-lg btn-block">
+            <input type="submit" name="troco" value="Calcular troco" class="btn btn-success btn-lg btn-block">
         </form>
     </div>
 </body>
