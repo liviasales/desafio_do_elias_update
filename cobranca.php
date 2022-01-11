@@ -6,6 +6,7 @@
         $valorDivida = $valorTotal - $valorPago;
         $notas = array(100,50,20,10,5,2);
         $quantidade = array(0,0,0,0,0,0);
+        $notas = array(100,50,20,10,5,2);
         function troco($valor) {
             $notas = array(100,50,20,10,5,2);
             $quantidade = array(0,0,0,0,0,0);       
@@ -16,6 +17,12 @@
             return $quantidade;
         }
         $array = troco($valorTroco);
+        $mensagem = '';
+        for ($i = 0; $i < 6; $i++) {
+            if (!empty($array[$i])) {
+                $mensagem .= $array[$i]. 'nota(s) de: '.$notas[$i].'reais'.'\\n';
+            }
+        }
         $mensagem = $array[0]. 'nota(s) de: '.$notas[0].'reais, '
                     .$array[1]. 'nota(s) de: '.$notas[1].'reais, '
                     .$array[2]. 'nota(s) de: '.$notas[2].'reais, '
