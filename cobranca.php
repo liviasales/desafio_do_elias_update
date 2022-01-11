@@ -15,12 +15,13 @@
             }        
             return $quantidade;
         }
-        $mensagem = $quantidade[0]. 'nota(s) de: '.$notas[0].', '
-                    .$quantidade[1]. 'nota(s) de: '.$notas[1].', '
-                    .$quantidade[2]. 'nota(s) de: '.$notas[2].', '
-                    .$quantidade[3]. 'nota(s) de: '.$notas[3].', '
-                    .$quantidade[4]. 'nota(s) de: '.$notas[4].' e '
-                    .$quantidade[5]. 'nota(s) de: '.$notas[5].'.';        
+        $array = troco($valorTroco);
+        $mensagem = $array[0]. 'nota(s) de: '.$notas[0].'reais, '
+                    .$array[1]. 'nota(s) de: '.$notas[1].'reais, '
+                    .$array[2]. 'nota(s) de: '.$notas[2].'reais, '
+                    .$array[3]. 'nota(s) de: '.$notas[3].'reais, '
+                    .$array[4]. 'nota(s) de: '.$notas[4].'reais, '
+                    .$array[5]. 'nota(s) de: '.$notas[5].'reais.';        
         if ((isset($valorPago)) && (isset($valorTotal)) && (!empty($valorPago)) &&  (!empty($valorTotal)) && ($valorPago > $valorTotal)) {
             echo "<script>alert('Seu troco é de: R$$valorTroco,00');</script><br>";
             echo "<script>alert('$mensagem');</script><br>";
